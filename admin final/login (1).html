@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      background: url('17497035056_381e6dc2a8_o-1024x1024 2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    header {
+      background: #B31C5D;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+    }
+
+    .header-center img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .header-center h1 {
+      font-size: 18px;
+      color: white;
+      margin: 0;
+    }
+
+    /* 3 dots button */
+    .dots-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      padding: 0 30px;
+      margin-right: 20px;
+    }
+
+    /* Dropdown menu */
+    .dropdown {
+      position: absolute;
+      top: 50px;
+      right: 40px;
+      background: #b12267;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      opacity: 0;
+      max-height: 0;
+      transition: all 0.3s ease;
+      padding: 10px 20px;
+    }
+
+    .dropdown.show {
+      opacity: 1;
+      max-height: 100px;
+    }
+
+    .dropdown button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .dropdown button:hover {
+      background-color: #a01955;
+    }
+
+    /* LOGIN CONTAINER */
+    .login-container {
+      background-color: rgba(108, 35, 65, 0.7);
+      width: 250px;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .login-container h2 {
+      margin-bottom: 30px;
+    }
+
+    .login-container label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .login-container input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ddd;
+      
+    }
+
+    .login-container button {
+      background-color: #B31C5D;
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      border-radius: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 18px;
+    }
+
+    .login-container button:hover {
+      background-color: #9e1753;
+    }
+
+    /* DASHBOARD */
+    .dashboard {
+      display: none;
+      background-color: rgba(108, 35, 65, 0.7);
+      width: 320px;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .dashboard button {
+      background: #B31C5D;
+      color: white;
+      border: none;
+      padding: 15px;
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dashboard button:hover {
+      background: #9e1753;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .header-center h1 { font-size: 16px; }
+
+      .login-container, .dashboard {
+        width: 85%;
+        padding: 25px;
+      }
+
+      .login-container button, .dashboard button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-center">
+      <img src="c:\Users\jomar\OneDrive\Pictures\Documents\CAPSTONE\admin final\Seal_of_Aklan.png" alt="Museo Logo">
+      <h1>Museo It Akean</h1>
+    </div>
+
+    <div class="header-right">
+      <button class="dots-btn" id="dotsBtn">⋯</button>
+      <div class="dropdown" id="dropdownMenu">
+        <button onclick="window.location.href='visitor.html'">Visitor</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="login-container">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter admin name" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+      <button type="submit">Log in</button>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="dashboard">
+    <h2>Welcome, Admin!</h2>
+    <button onclick="alert('Opening Fill-up View page...')">Fill-up View</button>
+    <button onclick="alert('Opening User Feedback page...')">Users Feedback</button>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const dotsBtn = document.getElementById('dotsBtn');
+    const dropdown = document.getElementById('dropdownMenu');
+
+    dotsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== dotsBtn) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Admin credentials
+    const ADMIN_NAME = "admin";
+    const ADMIN_PASSWORD = "12345";
+
+    // Login validation
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (name === ADMIN_NAME && password === ADMIN_PASSWORD) {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+      } else {
+        alert("Invalid name or password. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
